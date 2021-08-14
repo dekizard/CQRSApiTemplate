@@ -4,9 +4,14 @@ This project helps to quickly create specific CQRS Api-s for your organization.
 
 - Install template
 
-dotnet new --install C:\..\CQRSApiTemplate
+  dotnet new --install C:\..\CQRSApiTemplate
 
 
 - Create API
 
-dotnet new cqrs -n Payment
+  dotnet new cqrs -n Payment
+
+
+- Result model github source:
+
+  https://nuget.pkg.github.com/dekizard/index.json
