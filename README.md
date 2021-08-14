@@ -1,0 +1,2 @@
+# CQRSApiTemplate
+CQRS Api Template
