@@ -1,0 +1,12 @@
+{
+  "author": "Dekizard",
+  "classifications": [ "CQRS API" ], 
+  "name": "CQRS Api",
+  "identity": "CQRSApi",         
+  "shortName": "cqrs",                 
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "CQRSApiTemplate",
+  "preferNameDirectory":"true"
+}
