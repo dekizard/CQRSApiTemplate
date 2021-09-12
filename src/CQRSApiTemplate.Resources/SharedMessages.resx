@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="errCreateCategory" xml:space="preserve">
-    <value>An error occurred while creating category</value>
+    <value>An error occurred while creating category.</value>
   </data>
   <data name="errCreateProduct" xml:space="preserve">
-    <value>An error occurred while creating product</value>
+    <value>An error occurred while creating product.</value>
   </data>
   <data name="errDeleteCategory" xml:space="preserve">
-    <value>An error occurred while deleting category</value>
+    <value>An error occurred while deleting category.</value>
   </data>
   <data name="errDeleteProduct" xml:space="preserve">
-    <value>An error occurred while deleting product</value>
+    <value>An error occurred while deleting product.</value>
   </data>
   <data name="errUpdateCategory" xml:space="preserve">
-    <value>An error occurred while updating category</value>
+    <value>An error occurred while updating category.</value>
   </data>
   <data name="errUpdateProduct" xml:space="preserve">
-    <value>An error occurred while updating product</value>
+    <value>An error occurred while updating product.</value>
   </data>
   <data name="GetCategoryWithProducts" xml:space="preserve">
-    <value>An error occurred while retrieving category with products</value>
+    <value>An error occurred while retrieving category with products.</value>
   </data>
   <data name="GetProductsByCategoryId" xml:space="preserve">
-    <value>An error occurred while retrieving products</value>
+    <value>An error occurred while retrieving products.</value>
   </data>
   <data name="vldCategoryMissing" xml:space="preserve">
-    <value>There is no category with requested Id</value>
+    <value>There is no category with requested Id.</value>
   </data>
   <data name="vldCurrency" xml:space="preserve">
-    <value>Currency is not valid</value>
+    <value>Currency is not valid.</value>
   </data>
   <data name="vldNonPositivePrice" xml:space="preserve">
-    <value>Price value should be positive number</value>
+    <value>Price value should be positive number.</value>
   </data>
   <data name="vldNotValidModel" xml:space="preserve">
-    <value>Model is not valid</value>
+    <value>Model is not valid.</value>
   </data>
   <data name="vldProductMissing" xml:space="preserve">
-    <value>There is no product with requested Id</value>
+    <value>There is no product with requested Id.</value>
   </data>
 </root>

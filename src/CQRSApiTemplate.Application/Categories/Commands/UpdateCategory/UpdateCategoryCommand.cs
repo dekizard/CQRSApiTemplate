@@ -37,7 +37,7 @@ namespace CQRSApiTemplate.Application.Categories.Commands.UpdateCategory
 
                     Guard.Against.Null(category, nameof(category), SharedMessages.vldCategoryMissing);
 
-                    category.UpdateCategory(request.Name, request.Description);
+                    category.Update(request.Name, request.Description);
 
                     await _dbContext.SaveChangesAsync();
 

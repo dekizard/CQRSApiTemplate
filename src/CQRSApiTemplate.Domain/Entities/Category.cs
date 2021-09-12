@@ -23,7 +23,7 @@ namespace CQRSApiTemplate.Domain.Entities
             Description = description;
         }
 
-        public void UpdateCategory(string name, string description)
+        public void Update(string name, string description)
         {
             Guard.Against.NullOrEmpty(name, nameof(name));
 
@@ -38,13 +38,19 @@ namespace CQRSApiTemplate.Domain.Entities
 
         public void UpdateProduct(long id, string name, string description, decimal price)
         {
-            var product = _products.SingleOrDefault(t => t.Id == id);
+            var product = GetProduct(id);
             product.UpdateProduct(name, description, price);
         }
 
         public void RemoveProduct(long id)
         {
-            _products.Remove(_products.FirstOrDefault(t => t.Id == id));
+            var product = GetProduct(id);
+            _products.Remove(product);
+        }
+
+        private Product GetProduct(long id)
+        {
+            return _products.SingleOrDefault(t => t.Id == id);
         }
     }
 }

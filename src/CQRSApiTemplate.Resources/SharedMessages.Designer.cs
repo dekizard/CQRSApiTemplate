@@ -61,7 +61,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while creating category.
+        ///   Looks up a localized string similar to An error occurred while creating category..
         /// </summary>
         public static string errCreateCategory {
             get {
@@ -70,7 +70,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while creating product.
+        ///   Looks up a localized string similar to An error occurred while creating product..
         /// </summary>
         public static string errCreateProduct {
             get {
@@ -79,7 +79,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while deleting category.
+        ///   Looks up a localized string similar to An error occurred while deleting category..
         /// </summary>
         public static string errDeleteCategory {
             get {
@@ -88,7 +88,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while deleting product.
+        ///   Looks up a localized string similar to An error occurred while deleting product..
         /// </summary>
         public static string errDeleteProduct {
             get {
@@ -97,7 +97,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while updating category.
+        ///   Looks up a localized string similar to An error occurred while updating category..
         /// </summary>
         public static string errUpdateCategory {
             get {
@@ -106,7 +106,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while updating product.
+        ///   Looks up a localized string similar to An error occurred while updating product..
         /// </summary>
         public static string errUpdateProduct {
             get {
@@ -115,7 +115,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while retrieving category with products.
+        ///   Looks up a localized string similar to An error occurred while retrieving category with products..
         /// </summary>
         public static string GetCategoryWithProducts {
             get {
@@ -124,7 +124,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while retrieving products.
+        ///   Looks up a localized string similar to An error occurred while retrieving products..
         /// </summary>
         public static string GetProductsByCategoryId {
             get {
@@ -133,7 +133,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no category with requested Id.
+        ///   Looks up a localized string similar to There is no category with requested Id..
         /// </summary>
         public static string vldCategoryMissing {
             get {
@@ -142,7 +142,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Currency is not valid.
+        ///   Looks up a localized string similar to Currency is not valid..
         /// </summary>
         public static string vldCurrency {
             get {
@@ -151,7 +151,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Price value should be positive number.
+        ///   Looks up a localized string similar to Price value should be positive number..
         /// </summary>
         public static string vldNonPositivePrice {
             get {
@@ -160,7 +160,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Model is not valid.
+        ///   Looks up a localized string similar to Model is not valid..
         /// </summary>
         public static string vldNotValidModel {
             get {
@@ -169,7 +169,7 @@ namespace CQRSApiTemplate.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no product with requested Id.
+        ///   Looks up a localized string similar to There is no product with requested Id..
         /// </summary>
         public static string vldProductMissing {
             get {

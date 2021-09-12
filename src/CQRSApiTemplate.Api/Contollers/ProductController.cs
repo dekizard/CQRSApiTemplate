@@ -27,7 +27,7 @@ namespace CQRSApiTemplate.Api.Contollers
         /// <summary>
         ///  Create product
         /// </summary>
-        /// <param name="command">Create product command</param>
+        /// <param name="command">Create product</param>
         /// <returns>Result</returns>
         [ProducesResponseType(typeof(Result), (int)HttpStatusCode.OK)]
         [HttpPost()]
@@ -40,7 +40,7 @@ namespace CQRSApiTemplate.Api.Contollers
         /// <summary>
         ///  Update category
         /// </summary>
-        /// <param name="command">Update product command</param>
+        /// <param name="command">Update product</param>
         /// <returns>Result</returns>
         [ProducesResponseType(typeof(Result), (int)HttpStatusCode.OK)]
         [HttpPut()]
@@ -53,7 +53,7 @@ namespace CQRSApiTemplate.Api.Contollers
         /// <summary>
         ///  Delete category
         /// </summary>
-        /// <param name="command">Delete product command</param>
+        /// <param name="command">Delete product</param>
         /// <returns>Result</returns>
         [ProducesResponseType(typeof(Result), (int)HttpStatusCode.OK)]
         [HttpDelete()]

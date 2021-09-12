@@ -5,7 +5,7 @@ using Aliasnet.ResponseModel;
 using CQRSApiTemplate.Application.Categories.Commands.CreateCategory;
 using CQRSApiTemplate.Application.Categories.Commands.DeleteCategory;
 using CQRSApiTemplate.Application.Categories.Commands.UpdateCategory;
-using CQRSApiTemplate.Application.Categories.Queries.GetCategoryWithProucts;
+using CQRSApiTemplate.Application.Categories.Queries.GetCategoryWithProducts;
 
 namespace CQRSApiTemplate.Api.Contollers
 {
@@ -27,7 +27,7 @@ namespace CQRSApiTemplate.Api.Contollers
         /// <summary>
         ///  Create category
         /// </summary>
-        /// <param name="command">Create category command</param>
+        /// <param name="command">Create category</param>
         /// <returns>Result</returns>
         [ProducesResponseType(typeof(Result), (int)HttpStatusCode.OK)]
         [HttpPost()]
@@ -40,7 +40,7 @@ namespace CQRSApiTemplate.Api.Contollers
         /// <summary>
         ///  Update category
         /// </summary>
-        /// <param name="command">Update category command</param>
+        /// <param name="command">Update category</param>
         /// <returns>Result</returns>
         [ProducesResponseType(typeof(Result), (int)HttpStatusCode.OK)]
         [HttpPut()]
@@ -53,7 +53,7 @@ namespace CQRSApiTemplate.Api.Contollers
         /// <summary>
         ///  Delete category
         /// </summary>
-        /// <param name="command">Delete category command</param>
+        /// <param name="command">Delete category</param>
         /// <returns>Result</returns>
         [ProducesResponseType(typeof(Result), (int)HttpStatusCode.OK)]
         [HttpDelete()]

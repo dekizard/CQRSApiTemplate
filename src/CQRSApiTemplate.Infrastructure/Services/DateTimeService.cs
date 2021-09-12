@@ -5,6 +5,6 @@ namespace CQRSApiTemplate.Infrastructure.Services
 {
     public class DateTimeService : IDateTimeService
     {
-        public DateTimeOffset Now { get; set; } = DateTimeOffset.UtcNow;
+        public DateTimeOffset Now => DateTimeOffset.UtcNow;
     }
 }
