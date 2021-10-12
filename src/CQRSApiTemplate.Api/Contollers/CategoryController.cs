@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
-using Aliasnet.ResponseModel;
 using CQRSApiTemplate.Application.Categories.Commands.CreateCategory;
 using CQRSApiTemplate.Application.Categories.Commands.DeleteCategory;
 using CQRSApiTemplate.Application.Categories.Commands.UpdateCategory;
 using CQRSApiTemplate.Application.Categories.Queries.GetCategoryWithProducts;
+using ResultModel;
 
 namespace CQRSApiTemplate.Api.Contollers
 {
