@@ -1,2 +1,0 @@
-2021-08-14 14:36:10.629 +02:00 [INF] HTTP GET /swagger-ui-bundle.js.map responded 404 in 106.5190 ms
-2021-08-14 14:36:11.128 +02:00 [INF] HTTP GET /swagger-ui-standalone-preset.js.map responded 404 in 1.3610 ms

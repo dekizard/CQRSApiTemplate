@@ -1,8 +1,8 @@
-﻿using CQRSApiTemplate.Application.Interfaces;
+﻿using CQRSApiTemplate.Application.Common.ResultModel;
+using CQRSApiTemplate.Application.Interfaces;
 using CQRSApiTemplate.Resources;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using ResultModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

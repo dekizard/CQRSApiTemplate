@@ -1,4 +1,4 @@
-# Create CQRS api template
+# Create CQRS api template with clean architecture
 
 This project helps to quickly create specific CQRS Api-s for your organization.
 
@@ -10,8 +10,3 @@ This project helps to quickly create specific CQRS Api-s for your organization.
 - Create API
 
   dotnet new cqrs -n Payment
-
-
-- Result model github source:
-
-  https://nuget.pkg.github.com/dekizard/index.json

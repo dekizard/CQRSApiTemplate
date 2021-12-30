@@ -1,9 +1,9 @@
-﻿using CQRSApiTemplate.Application.Features.Products.Commands.CreateProduct;
+﻿using CQRSApiTemplate.Application.Common.ResultModel;
+using CQRSApiTemplate.Application.Features.Products.Commands.CreateProduct;
 using CQRSApiTemplate.Application.Features.Products.Commands.DeleteProduct;
 using CQRSApiTemplate.Application.Features.Products.Commands.UpdateProduct;
 using CQRSApiTemplate.Application.Features.Products.Queries.GetProductsByCatetoryIdQuery;
 using Microsoft.AspNetCore.Mvc;
-using ResultModel;
 using System.Net;
 using System.Threading.Tasks;
 

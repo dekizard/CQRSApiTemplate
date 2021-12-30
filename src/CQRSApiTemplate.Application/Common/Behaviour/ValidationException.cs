@@ -1,4 +1,4 @@
-﻿using ResultModel;
+﻿using CQRSApiTemplate.Application.Common.ResultModel;
 using System;
 
 namespace CQRSApiTemplate.Application.Common.Behaviour

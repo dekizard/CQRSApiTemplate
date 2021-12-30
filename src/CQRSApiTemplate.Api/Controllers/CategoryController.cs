@@ -5,7 +5,7 @@ using CQRSApiTemplate.Application.Features.Categories.Commands.CreateCategory;
 using CQRSApiTemplate.Application.Features.Categories.Commands.DeleteCategory;
 using CQRSApiTemplate.Application.Features.Categories.Commands.UpdateCategory;
 using CQRSApiTemplate.Application.Features.Categories.Queries.GetCategoryWithProducts;
-using ResultModel;
+using CQRSApiTemplate.Application.Common.ResultModel;
 
 namespace CQRSApiTemplate.Api.Controllers
 {

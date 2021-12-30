@@ -1,8 +1,8 @@
-﻿using CQRSApiTemplate.Resources;
+﻿using CQRSApiTemplate.Application.Common.ResultModel;
+using CQRSApiTemplate.Resources;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using ResultModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;

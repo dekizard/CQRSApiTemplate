@@ -1,10 +1,10 @@
 ﻿using Ardalis.GuardClauses;
+using CQRSApiTemplate.Application.Common.ResultModel;
 using CQRSApiTemplate.Application.Interfaces;
 using CQRSApiTemplate.Resources;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using ResultModel;
 using System.Threading;
 using System.Threading.Tasks;
 
