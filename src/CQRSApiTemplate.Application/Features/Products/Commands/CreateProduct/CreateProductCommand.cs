@@ -8,7 +8,7 @@ using ResultModel;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Products.Commands.CreateProduct
+namespace CQRSApiTemplate.Application.Features.Products.Commands.CreateProduct
 {
     public class CreateProductCommand : IRequest<Result>
     {

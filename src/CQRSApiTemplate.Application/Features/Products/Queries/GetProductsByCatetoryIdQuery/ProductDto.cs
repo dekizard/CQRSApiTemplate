@@ -1,4 +1,4 @@
-﻿namespace CQRSApiTemplate.Application.Products.Queries.GetProductsByCatetoryIdQuery
+﻿namespace CQRSApiTemplate.Application.Features.Products.Queries.GetProductsByCatetoryIdQuery
 {
     public class ProductDto
     {

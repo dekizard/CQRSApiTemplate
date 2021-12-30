@@ -9,41 +9,44 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Categories.Commands.DeleteCategory
+namespace CQRSApiTemplate.Application.Features.Categories.Commands.UpdateCategory
 {
-    public class DeleteCategoryCommand : IRequest<Result>
+    public class UpdateCategoryCommand : IRequest<Result>
     {
         public long Id { get; init; }
+        public string Name { get; init; }
+        public string Description { get; init; }
 
-        public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Result>
+        public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, Result>
         {
             private readonly ICQRSApiTemplateDbContext _dbContext;
-            private readonly ILogger<DeleteCategoryCommandHandler> _logger;
+            private readonly ILogger<UpdateCategoryCommandHandler> _logger;
 
-            public DeleteCategoryCommandHandler(ICQRSApiTemplateDbContext context, ILogger<DeleteCategoryCommandHandler> logger)
+            public UpdateCategoryCommandHandler(ICQRSApiTemplateDbContext context, ILogger<UpdateCategoryCommandHandler> logger)
             {
                 _dbContext = context;
                 _logger = logger;
             }
 
-            public async Task<Result> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+            public async Task<Result> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
             {
                 try
                 {
                     var category = await _dbContext.Categories
                             .SingleOrDefaultAsync(t => t.Id == request.Id);
-                    
+
                     Guard.Against.Null(category, nameof(category), SharedMessages.vldCategoryMissing);
 
-                    _dbContext.Categories.Remove(category);
+                    category.Update(request.Name, request.Description);
+
                     await _dbContext.SaveChangesAsync();
 
                     return Result.CreateSuccess();
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(new EventId(), ex, "DeleteCategoryCommandHandler - error - {@DeleteCategoryCommand}", request);
-                    return Result.CreateFailed(SharedMessages.errDeleteCategory);
+                    _logger.LogError(new EventId(), ex, "UpdateCategoryCommandHandler - error - {@UpdateCategoryCommand}", request);
+                    return Result.CreateFailed(SharedMessages.errUpdateCategory);
                 }
             }
         }

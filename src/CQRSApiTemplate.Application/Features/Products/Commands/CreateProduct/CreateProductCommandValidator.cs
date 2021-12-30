@@ -2,7 +2,7 @@
 using CQRSApiTemplate.Resources;
 using CQRSApiTemplate.Domain.Enums;
 
-namespace CQRSApiTemplate.Application.Products.Commands.CreateProduct
+namespace CQRSApiTemplate.Application.Features.Products.Commands.CreateProduct
 {
     public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
     {

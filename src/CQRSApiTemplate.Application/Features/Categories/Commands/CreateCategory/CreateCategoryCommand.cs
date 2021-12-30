@@ -7,7 +7,7 @@ using ResultModel;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Categories.Commands.CreateCategory
+namespace CQRSApiTemplate.Application.Features.Categories.Commands.CreateCategory
 {
     public class CreateCategoryCommand : IRequest<Result>
     {

@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace CQRSApiTemplate.Application.Products.Commands.UpdateProduct
+namespace CQRSApiTemplate.Application.Features.Products.Commands.UpdateProduct
 {
     public class UpdateProductCommand : IRequest<Result>
     {

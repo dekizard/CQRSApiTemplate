@@ -1,7 +1,7 @@
 ﻿using CQRSApiTemplate.Resources;
 using FluentValidation;
 
-namespace CQRSApiTemplate.Application.Products.Commands.UpdateProduct
+namespace CQRSApiTemplate.Application.Features.Products.Commands.UpdateProduct
 {
     public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
     {

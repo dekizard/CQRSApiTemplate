@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Products.Queries.GetProductsByCatetoryIdQuery
+namespace CQRSApiTemplate.Application.Features.Products.Queries.GetProductsByCatetoryIdQuery
 {
     public class GetProductsByCatetoryIdQuery : IRequest<Result<IList<ProductDto>>>
     {

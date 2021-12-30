@@ -6,18 +6,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ResultModel;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Products.Commands.DeleteProduct
+namespace CQRSApiTemplate.Application.Features.Categories.Commands.DeleteCategory
 {
-    public class DeleteProductCommand : IRequest<Result>
+    public class DeleteCategoryCommand : IRequest<Result>
     {
-        public long CategoryId { get; init; }
         public long Id { get; init; }
 
-        public class DeleteCategoryCommandHandler : IRequestHandler<DeleteProductCommand, Result>
+        public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Result>
         {
             private readonly ICQRSApiTemplateDbContext _dbContext;
             private readonly ILogger<DeleteCategoryCommandHandler> _logger;
@@ -28,18 +26,16 @@ namespace CQRSApiTemplate.Application.Products.Commands.DeleteProduct
                 _logger = logger;
             }
 
-            public async Task<Result> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+            public async Task<Result> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
             {
                 try
                 {
                     var category = await _dbContext.Categories
-                            .Include(t => t.Products)
-                            .SingleOrDefaultAsync(t => t.Id == request.CategoryId && t.Products.Any(p => p.Id == request.Id));
+                            .SingleOrDefaultAsync(t => t.Id == request.Id);
+                    
+                    Guard.Against.Null(category, nameof(category), SharedMessages.vldCategoryMissing);
 
-                    Guard.Against.Null(category, nameof(category), SharedMessages.vldProductMissing);
-
-                    category.RemoveProduct(request.Id);
-
+                    _dbContext.Categories.Remove(category);
                     await _dbContext.SaveChangesAsync();
 
                     return Result.CreateSuccess();
