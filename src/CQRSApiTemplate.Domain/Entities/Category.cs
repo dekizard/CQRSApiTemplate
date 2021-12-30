@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CQRSApiTemplate.Domain.Entities
 {
-    public class Category : AuditableEntity, IAggreagateRoot
+    public class Category : AuditableEntity, IAggregateRoot
     {
         public string Name { get; private set; }
         public string Description { get; private set; }

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CQRSApiTemplate.Api.Contollers
+namespace CQRSApiTemplate.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

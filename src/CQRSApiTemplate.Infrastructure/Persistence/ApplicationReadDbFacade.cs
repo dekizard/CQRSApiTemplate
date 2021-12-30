@@ -12,22 +12,22 @@ namespace CQRSApiTemplate.Infrastructure.Persistence
 {
     public class ApplicationReadDbFacade : IApplicationReadDbFacade, IDisposable
     {
-        private readonly IDbConnection connection;
-        private bool disposed = false;
+        private readonly IDbConnection _connection;
+        private bool _disposed = false;
 
-        public ApplicationReadDbFacade(IConfiguration configuration) => connection = new SqlConnection(configuration.GetConnectionString("CQRSApiTemplate"));
+        public ApplicationReadDbFacade(IConfiguration configuration) => _connection = new SqlConnection(configuration.GetConnectionString("CQRSApiTemplate"));
 
         public async Task<IReadOnlyList<TReturn>> QueryAsync<TReturn>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
-                => (await connection.QueryAsync<TReturn>(sql, param, transaction)).AsList();
+                => (await _connection.QueryAsync<TReturn>(sql, param, transaction)).AsList();
 
         public async Task<IReadOnlyList<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, Func<TFirst, TSecond, TReturn> map, object param = null, IDbTransaction transaction = null, bool buffered = true, string splitOn = "Id", int? commandTimeout = null, CommandType? commandType = null)
-                => (await connection.QueryAsync(sql, map, param, transaction, buffered, splitOn, commandTimeout, commandType)).AsList();
+                => (await _connection.QueryAsync(sql, map, param, transaction, buffered, splitOn, commandTimeout, commandType)).AsList();
 
         public async Task<TReturn> QueryFirstOrDefaultAsync<TReturn>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
-                => await connection.QueryFirstOrDefaultAsync<TReturn>(sql, param, transaction);
+                => await _connection.QueryFirstOrDefaultAsync<TReturn>(sql, param, transaction);
 
         public async Task<TReturn> QuerySingleAsync<TReturn>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
-                => await connection.QuerySingleAsync<TReturn>(sql, param, transaction);
+                => await _connection.QuerySingleAsync<TReturn>(sql, param, transaction);
 
         public void Dispose()
         {
@@ -37,15 +37,16 @@ namespace CQRSApiTemplate.Infrastructure.Persistence
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (_disposed)
             {
-                if (disposing)
-                {
-                    connection.Dispose();
-                }
-
-                disposed = true;
+                return;
             }
+            if (disposing)
+            {
+                _connection.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }

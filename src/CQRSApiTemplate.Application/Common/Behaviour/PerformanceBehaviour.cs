@@ -7,7 +7,7 @@ using CQRSApiTemplate.Application.Interfaces;
 
 namespace CQRSApiTemplate.Application.Common.Behaviour
 {
-    public class PerformanceBehaviour<TRequest, TResonse> : IPipelineBehavior<TRequest, TResonse>
+    public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly Stopwatch _timer;
         private readonly ICurrentUser _currentUser;
@@ -20,7 +20,7 @@ namespace CQRSApiTemplate.Application.Common.Behaviour
             _logger = logger;
         }
 
-        public async Task<TResonse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResonse> next)
+        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             _logger.LogInformation("Request: {@request}", request);
 
@@ -30,14 +30,14 @@ namespace CQRSApiTemplate.Application.Common.Behaviour
 
             _timer.Stop();
 
-            var elapseMiliseconds = _timer.ElapsedMilliseconds;
+            var elapseMilliseconds = _timer.ElapsedMilliseconds;
 
-            if (elapseMiliseconds > 1000)
+            if (elapseMilliseconds > 1000)
             {
                 var requestName = typeof(TRequest).Name;
                 var userId = _currentUser.GetUserId();
 
-                _logger.LogWarning("Long Running Request: {@requestName} {@elapseMiliseconds} ms {@userId} {@request}", requestName, elapseMiliseconds, userId, request);
+                _logger.LogWarning("Long Running Request: {@requestName} {@elapseMilliseconds} ms {@userId} {@request}", requestName, elapseMilliseconds, userId, request);
             }
 
             _logger.LogInformation("Response: {@response}", response);
