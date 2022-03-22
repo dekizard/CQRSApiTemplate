@@ -1,6 +1,6 @@
 # Create CQRS api template with clean architecture
 
-This project helps to quickly create specific CQRS Api-s for your organization.
+This project helps to quickly create specific CQRS API-s for your organization.
 
 - Install template
 
