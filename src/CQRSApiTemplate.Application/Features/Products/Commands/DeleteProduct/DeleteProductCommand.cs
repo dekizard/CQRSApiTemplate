@@ -2,53 +2,46 @@
 using CQRSApiTemplate.Application.Common.ResultModel;
 using CQRSApiTemplate.Application.Interfaces;
 using CQRSApiTemplate.Resources;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Features.Products.Commands.DeleteProduct
+namespace CQRSApiTemplate.Application.Features.Products.Commands.DeleteProduct;
+
+public class DeleteProductCommand : IRequest<Result>
 {
-    public class DeleteProductCommand : IRequest<Result>
+    public long CategoryId { get; init; }
+    public long Id { get; init; }
+
+    public class DeleteCategoryCommandHandler : IRequestHandler<DeleteProductCommand, Result>
     {
-        public long CategoryId { get; init; }
-        public long Id { get; init; }
+        private readonly ICQRSApiTemplateDbContext _dbContext;
+        private readonly ILogger<DeleteCategoryCommandHandler> _logger;
 
-        public class DeleteCategoryCommandHandler : IRequestHandler<DeleteProductCommand, Result>
+        public DeleteCategoryCommandHandler(ICQRSApiTemplateDbContext context, ILogger<DeleteCategoryCommandHandler> logger)
         {
-            private readonly ICQRSApiTemplateDbContext _dbContext;
-            private readonly ILogger<DeleteCategoryCommandHandler> _logger;
+            _dbContext = context;
+            _logger = logger;
+        }
 
-            public DeleteCategoryCommandHandler(ICQRSApiTemplateDbContext context, ILogger<DeleteCategoryCommandHandler> logger)
+        public async Task<Result> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+        {
+            try
             {
-                _dbContext = context;
-                _logger = logger;
+                var category = await _dbContext.Categories
+                        .Include(t => t.Products)
+                        .SingleOrDefaultAsync(t => t.Id == request.CategoryId && t.Products.Any(p => p.Id == request.Id));
+
+                Guard.Against.Null(category, nameof(category), SharedMessages.vldProductMissing);
+
+                category.RemoveProduct(request.Id);
+
+                await _dbContext.SaveChangesAsync();
+
+                return Result.CreateSuccess();
             }
-
-            public async Task<Result> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+            catch (Exception ex)
             {
-                try
-                {
-                    var category = await _dbContext.Categories
-                            .Include(t => t.Products)
-                            .SingleOrDefaultAsync(t => t.Id == request.CategoryId && t.Products.Any(p => p.Id == request.Id));
-
-                    Guard.Against.Null(category, nameof(category), SharedMessages.vldProductMissing);
-
-                    category.RemoveProduct(request.Id);
-
-                    await _dbContext.SaveChangesAsync();
-
-                    return Result.CreateSuccess();
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(new EventId(), ex, "DeleteCategoryCommandHandler - error - {@DeleteCategoryCommand}", request);
-                    return Result.CreateFailed(SharedMessages.errDeleteCategory);
-                }
+                _logger.LogError(new EventId(), ex, "DeleteCategoryCommandHandler - error - {@DeleteCategoryCommand}", request);
+                return Result.CreateFailed(SharedMessages.errDeleteCategory);
             }
         }
     }

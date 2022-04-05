@@ -1,48 +1,41 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using CQRSApiTemplate.Application.Interfaces;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-using CQRSApiTemplate.Application.Interfaces;
 
-namespace CQRSApiTemplate.Application.Common.Behaviour
+namespace CQRSApiTemplate.Application.Common.Behaviour;
+
+public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 {
-    public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    private readonly Stopwatch _timer;
+    private readonly ICurrentUser _currentUser;
+    private readonly ILogger<TRequest> _logger;
+
+    public PerformanceBehaviour(ICurrentUser currentUser, ILogger<TRequest> logger)
     {
-        private readonly Stopwatch _timer;
-        private readonly ICurrentUser _currentUser;
-        private readonly ILogger<TRequest> _logger;
+        _timer = new Stopwatch();
+        _currentUser = currentUser;
+        _logger = logger;
+    }
 
-        public PerformanceBehaviour(ICurrentUser currentUser, ILogger<TRequest> logger)
+    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    {
+        _logger.LogInformation("Request: {@request}", request);
+
+        _timer.Start();
+
+        var response = await next();
+
+        _timer.Stop();
+
+        var elapseMilliseconds = _timer.ElapsedMilliseconds;
+
+        if (elapseMilliseconds > 1000)
         {
-            _timer = new Stopwatch();
-            _currentUser = currentUser;
-            _logger = logger;
+            var requestName = typeof(TRequest).Name;
+            var userId = _currentUser.GetUserId();
+
+            _logger.LogWarning("Long Running Request: {@requestName} {@elapseMilliseconds} ms {@userId} {@request}", requestName, elapseMilliseconds, userId, request);
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
-        {
-            _logger.LogInformation("Request: {@request}", request);
-
-            _timer.Start();
-
-            var response = await next();
-
-            _timer.Stop();
-
-            var elapseMilliseconds = _timer.ElapsedMilliseconds;
-
-            if (elapseMilliseconds > 1000)
-            {
-                var requestName = typeof(TRequest).Name;
-                var userId = _currentUser.GetUserId();
-
-                _logger.LogWarning("Long Running Request: {@requestName} {@elapseMilliseconds} ms {@userId} {@request}", requestName, elapseMilliseconds, userId, request);
-            }
-
-            _logger.LogInformation("Response: {@response}", response);
-
-            return response;
-        }
+        return response;
     }
 }

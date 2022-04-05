@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace CQRSApiTemplate.Infrastructure.Persistence
+namespace CQRSApiTemplate.Infrastructure.Persistence;
+
+public static class ModelBuilderExtensions
 {
-    public static class ModelBuilderExtensions
+    public static void Seed(this ModelBuilder modelBuilder)
     {
-        public static void Seed(this ModelBuilder modelBuilder)
-        {
-        }
     }
 }

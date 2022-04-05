@@ -2,18 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace CQRSApiTemplate.Api.Filters
+namespace CQRSApiTemplate.Api.Filters;
+
+public class ApiExceptionFilterAttribute: ExceptionFilterAttribute
 {
-    public class ApiExceptionFilterAttribute: ExceptionFilterAttribute
+    public override void OnException(ExceptionContext context)
     {
-        public override void OnException(ExceptionContext context)
+        if (context.Exception is ValidationException validationException)
         {
-            if (context.Exception is ValidationException validationException)
-            {
-                context.Result = new ObjectResult(validationException.Result);
-            }
-          
-            base.OnException(context);
+            context.Result = new ObjectResult(validationException.Result);
         }
+      
+        base.OnException(context);
     }
 }

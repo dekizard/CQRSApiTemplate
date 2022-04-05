@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace CQRSApiTemplate.Application.Interfaces;
 
-namespace CQRSApiTemplate.Application.Interfaces
+public interface IDateTimeService
 {
-    public interface IDateTimeService
-    {
-        DateTimeOffset Now { get; }
-    }
+    DateTimeOffset Now { get; }
 }

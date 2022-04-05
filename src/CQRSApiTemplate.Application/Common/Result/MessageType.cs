@@ -1,10 +1,9 @@
-﻿namespace CQRSApiTemplate.Application.Common.ResultModel
+﻿namespace CQRSApiTemplate.Application.Common.ResultModel;
+
+public enum MessageType
 {
-    public enum MessageType
-    {
-        Info,
-        Warning,
-        Error,
-        Critical
-    }
+    Info,
+    Warning,
+    Error,
+    Critical
 }

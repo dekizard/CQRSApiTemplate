@@ -1,7 +1,6 @@
-﻿namespace CQRSApiTemplate.Application.Interfaces
+﻿namespace CQRSApiTemplate.Application.Interfaces;
+
+public interface ICurrentUser
 {
-    public interface ICurrentUser
-    {
-        string GetUserId();
-    }
+    string GetUserId();
 }

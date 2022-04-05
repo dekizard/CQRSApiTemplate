@@ -1,19 +1,17 @@
 ﻿using CQRSApiTemplate.Application.Common.ResultModel;
-using System;
 
-namespace CQRSApiTemplate.Application.Common.Behaviour
+namespace CQRSApiTemplate.Application.Common.Behaviour;
+
+public class ValidationException: Exception
 {
-    public class ValidationException: Exception
+    public Result Result { get; set; }
+    
+    public ValidationException() : base()
     {
-        public Result Result { get; set; }
-        
-        public ValidationException() : base()
-        {
-        }
+    }
 
-        public ValidationException(Result result) : this()
-        {
-            Result = result;
-        }
+    public ValidationException(Result result) : this()
+    {
+        Result = result;
     }
 }

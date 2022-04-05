@@ -1,8 +1,7 @@
-﻿namespace CQRSApiTemplate.Domain.Enums
+﻿namespace CQRSApiTemplate.Domain.Enums;
+
+public enum Currency
 {
-    public enum Currency
-    {
-        Dollar,
-        Euro
-    }
+    Dollar,
+    Euro
 }

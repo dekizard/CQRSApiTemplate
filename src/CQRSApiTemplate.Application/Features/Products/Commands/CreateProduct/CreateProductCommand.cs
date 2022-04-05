@@ -2,53 +2,48 @@
 using CQRSApiTemplate.Application.Common.ResultModel;
 using CQRSApiTemplate.Application.Interfaces;
 using CQRSApiTemplate.Resources;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace CQRSApiTemplate.Application.Features.Products.Commands.CreateProduct
+namespace CQRSApiTemplate.Application.Features.Products.Commands.CreateProduct;
+
+public class CreateProductCommand : IRequest<Result>
 {
-    public class CreateProductCommand : IRequest<Result>
+    public long CategoryId { get; init; }
+    public string Name { get; init; }
+    public string Description { get; init; }
+    public decimal Price { get; init; }
+    public string Currency { get; init; }
+
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result>
     {
-        public long CategoryId { get; init; }
-        public string Name { get; init; }
-        public string Description { get; init; }
-        public decimal Price { get; init; }
-        public string Currency { get; init; }
+        private readonly ICQRSApiTemplateDbContext _dbContext;
+        private readonly ILogger<CreateProductCommandHandler> _logger;
 
-        public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result>
+        public CreateProductCommandHandler(ICQRSApiTemplateDbContext context, ILogger<CreateProductCommandHandler> logger)
         {
-            private readonly ICQRSApiTemplateDbContext _dbContext;
-            private readonly ILogger<CreateProductCommandHandler> _logger;
+            _dbContext = context;
+            _logger = logger;
+        }
 
-            public CreateProductCommandHandler(ICQRSApiTemplateDbContext context, ILogger<CreateProductCommandHandler> logger)
+        public async Task<Result> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        {
+            try
             {
-                _dbContext = context;
-                _logger = logger;
+                var category = await _dbContext.Categories
+                        .SingleOrDefaultAsync(t => t.Id == request.CategoryId);
+
+                Guard.Against.Null(category, nameof(category), SharedMessages.vldCategoryMissing);
+
+                category.AddProduct(request.Name, request.Description, request.Price, request.Currency);
+                
+                await _dbContext.SaveChangesAsync();
+
+                return Result.CreateSuccess();
             }
-
-            public async Task<Result> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+            catch (System.Exception ex)
             {
-                try
-                {
-                    var category = await _dbContext.Categories
-                            .SingleOrDefaultAsync(t => t.Id == request.CategoryId);
-
-                    Guard.Against.Null(category, nameof(category), SharedMessages.vldCategoryMissing);
-
-                    category.AddProduct(request.Name, request.Description, request.Price, request.Currency);
-                    
-                    await _dbContext.SaveChangesAsync();
-
-                    return Result.CreateSuccess();
-                }
-                catch (System.Exception ex)
-                {
-                    _logger.LogError(new EventId(), ex, "CreateProductCommandHandler - error - {@CreateProductCommand}", request);
-                    return Result.CreateFailed(SharedMessages.errCreateProduct);
-                }
+                _logger.LogError(new EventId(), ex, "CreateProductCommandHandler - error - {@CreateProductCommand}", request);
+                return Result.CreateFailed(SharedMessages.errCreateProduct);
             }
         }
     }

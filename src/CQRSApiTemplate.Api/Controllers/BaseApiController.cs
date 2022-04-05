@@ -2,14 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CQRSApiTemplate.Api.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class BaseApiController : ControllerBase
-    {
-        private ISender _mediator;
+namespace CQRSApiTemplate.Api.Controllers;
 
-        protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetService<ISender>();
-    }
+[ApiController]
+[Route("[controller]")]
+public class BaseApiController : ControllerBase
+{
+    private ISender _mediator;
+
+    protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetService<ISender>();
 }

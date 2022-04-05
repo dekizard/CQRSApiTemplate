@@ -1,6 +1,5 @@
-﻿namespace CQRSApiTemplate.Domain.Abstraction
+﻿namespace CQRSApiTemplate.Domain.Abstraction;
+
+public interface IAggregateRoot
 {
-    public interface IAggregateRoot
-    {
-    }
 }

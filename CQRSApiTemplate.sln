@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSApiTemplate.Domain", "src\CQRSApiTemplate.Domain\CQRSApiTemplate.Domain.csproj", "{C9DFA574-A60E-48CF-B96C-CD1D43E75FD3}"
 EndProject
@@ -20,8 +20,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{834127A8-EED0-48D4-A86A-168FF601DB7A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSApiTemplate.Resources", "src\CQRSApiTemplate.Resources\CQRSApiTemplate.Resources.csproj", "{0002AC15-1E69-49D2-8958-2CE699C41CC9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSApiTemplate.DI", "src\CQRSApiTemplate.DI\CQRSApiTemplate.DI.csproj", "{6ED30680-1E6E-4341-A95B-45D9AEFA06E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +47,6 @@ Global
 		{0002AC15-1E69-49D2-8958-2CE699C41CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0002AC15-1E69-49D2-8958-2CE699C41CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0002AC15-1E69-49D2-8958-2CE699C41CC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6ED30680-1E6E-4341-A95B-45D9AEFA06E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ED30680-1E6E-4341-A95B-45D9AEFA06E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ED30680-1E6E-4341-A95B-45D9AEFA06E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ED30680-1E6E-4341-A95B-45D9AEFA06E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,7 +58,6 @@ Global
 		{D1702FF9-EB1A-4A96-98AE-B0D657952C80} = {BEC4D0EE-D38B-4036-A498-2F59F027257F}
 		{834127A8-EED0-48D4-A86A-168FF601DB7A} = {BEC4D0EE-D38B-4036-A498-2F59F027257F}
 		{0002AC15-1E69-49D2-8958-2CE699C41CC9} = {834127A8-EED0-48D4-A86A-168FF601DB7A}
-		{6ED30680-1E6E-4341-A95B-45D9AEFA06E0} = {BEC4D0EE-D38B-4036-A498-2F59F027257F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {784E2A5B-8C9A-4082-835C-922BB01EBD5A}
